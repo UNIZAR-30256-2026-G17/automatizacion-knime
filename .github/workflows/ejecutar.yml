@@ -33,7 +33,7 @@ jobs:
 
       - name: 5. Verificar que KNIME está listo
         run: |
-          ./knime_engine/knime --version
+          xvfb-run ./knime_engine/knime --version
 
       - name: 6. Ejecutar Flujo de KNIME
         env:
