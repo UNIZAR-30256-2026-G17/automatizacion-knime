@@ -12,8 +12,9 @@
                     <entry key="filterMode" type="xstring" value="FILE"/>
                     <config key="path">
                         <entry key="location_present" type="xboolean" value="true"/>
-                        <entry key="file_system_type" type="xstring" value="LOCAL"/>
-                        <entry key="path" type="xstring" value="D:\CUARTO\STW\DATOS\crimenes_ya_subidos.csv"/>
+                        <entry key="file_system_type" type="xstring" value="CUSTOM_URL"/>
+                        <entry key="file_system_specifier" type="xstring" value="10000"/>
+                        <entry key="path" type="xstring" value="knime://knime.workflow/DATOS/crimenes_ya_subidos.csv"/>
                     </config>
                     <entry key="includeSubfolders" type="xboolean" value="false"/>
                     <config key="filters">
@@ -130,16 +131,17 @@
                 </config>
             </config>
         </config>
-        <entry key="sourceId_Internals" type="xstring" value="D:\CUARTO\STW\DATOS\crimenes_ya_subidos.csv"/>
+        <entry key="sourceId_Internals" type="xstring" value="knime://knime.workflow/DATOS/crimenes_ya_subidos.csv"/>
         <config key="transformationParameters">
             <config key="specs">
                 <config key="0">
                     <config key="fsLocation">
                         <entry key="location_present" type="xboolean" value="true"/>
-                        <entry key="file_system_type" type="xstring" value="LOCAL"/>
-                        <entry key="path" type="xstring" value="D:\CUARTO\STW\DATOS\crimenes_ya_subidos.csv"/>
+                        <entry key="file_system_type" type="xstring" value="CUSTOM_URL"/>
+                        <entry key="file_system_specifier" type="xstring" value="10000"/>
+                        <entry key="path" type="xstring" value="knime://knime.workflow/DATOS/crimenes_ya_subidos.csv"/>
                     </config>
-                    <entry key="sourceIdentifier" type="xstring" value="D:\CUARTO\STW\DATOS\crimenes_ya_subidos.csv"/>
+                    <entry key="sourceIdentifier" type="xstring" value="DATOS/crimenes_ya_subidos.csv"/>
                     <config key="spec">
                         <config key="0">
                             <entry key="name" type="xstring" value="incident_id"/>
