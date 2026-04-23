@@ -44,9 +44,9 @@ jobs:
         run: |
           xvfb-run ./knime_engine/knime -nosplash \
             -application com.nodepit.batch.application.NodePitBatchExecutor \
-            -workflowDir="./Montgomery" \
-            -reset \
-            -workflow.variable=MONGO_PASSWORD,"$MONGO_PASSWORD",String
+            -v MONGO_PASSWORD;"$MONGO_PASSWORD";String \
+            -r \
+            "$GITHUB_WORKSPACE/Montgomery"
 
       - name: 7. Guardar la memoria histórica en GitHub
         run: |
