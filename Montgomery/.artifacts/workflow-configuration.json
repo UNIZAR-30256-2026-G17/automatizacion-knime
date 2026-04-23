@@ -1,2 +1,6 @@
 {
+    "knime.var.MONGO_PASSWORD": {
+        "type": "string",
+        "default": "admin_grupo17"
+    }
 }

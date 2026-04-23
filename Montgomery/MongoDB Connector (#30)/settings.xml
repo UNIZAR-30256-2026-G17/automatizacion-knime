@@ -13,7 +13,7 @@
         <config key="auth">
             <entry key="credentials" type="xstring" isnull="true" value=""/>
             <entry key="username" type="xstring" value="stw_admin"/>
-            <entry key="password" type="xpassword" value="02DQAAAGMq_QxveL1vZ0EBj92-ze81J97YRyRgUXRfES8g"/>
+            <entry key="password" type="xpassword" isnull="true" value=""/>
             <entry key="selectedType" type="xstring" value="USER_PWD"/>
         </config>
         <config key="options_Internals">
@@ -39,6 +39,17 @@
             <entry key="EnabledStatus" type="xboolean" value="true"/>
         </config>
         <entry key="connectionType" type="xstring" value="SRV"/>
+    </config>
+    <config key="variables">
+        <entry key="version" type="xstring" value="V_2019_09_13"/>
+        <config key="tree">
+            <config key="auth">
+                <config key="password">
+                    <entry key="used_variable" type="xstring" value="MONGO_PASSWORD"/>
+                    <entry key="exposed_variable" type="xstring" isnull="true" value=""/>
+                </config>
+            </config>
+        </config>
     </config>
     <config key="nodeAnnotation">
         <entry key="text" type="xstring" value="Node 19"/>

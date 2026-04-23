@@ -8,14 +8,16 @@
         <entry key="authored-by" type="xstring" value="luvam"/>
         <entry key="authored-when" type="xstring" value="2026-03-03 18:18:52 +0100"/>
         <entry key="lastEdited-by" type="xstring" value="luvam"/>
-        <entry key="lastEdited-when" type="xstring" value="2026-04-23 13:07:35 +0200"/>
+        <entry key="lastEdited-when" type="xstring" value="2026-04-23 13:40:35 +0200"/>
     </config>
     <entry key="customDescription" type="xstring" isnull="true" value=""/>
     <entry key="state" type="xstring" value="IDLE"/>
-    <config key="nodecontainer_message">
-        <entry key="type" type="xstring" value="ERROR"/>
-        <entry key="message" type="xstring" value="Contains one node with execution failure (CSV Reader #1)"/>
-        <entry key="issue" type="xstring" value="CSV Reader #1: The specified file DATOS/datos_policia_brutos.csv does not exist."/>
+    <config key="workflow_variables">
+        <config key="Var_0">
+            <entry key="name" type="xstring" value="MONGO_PASSWORD"/>
+            <entry key="class" type="xstring" value="STRING"/>
+            <entry key="value" type="xstring" value="admin_grupo17"/>
+        </config>
     </config>
     <config key="workflow_credentials"/>
     <config key="nodes">
