@@ -31,22 +31,22 @@ jobs:
           tar -xzf knime_5.11.0.linux.gtk.x86_64.tar.gz
           mv knime_5.11.0 knime_engine
 
-      - name: 5. Instalar NodePit Batch (compatible con 5.11, gratuito)
+      - name: 5. Instalar Extensión Batch nativa
         run: |
-          xvfb-run ./knime_engine/knime -nosplash -consoleLog \
-            -application org.eclipse.equinox.p2.director \
-            -repository https://download.nodepit.com/5.11 \
-            -installIUs com.nodepit.batch.feature.feature.group
+          # Usamos el repositorio oficial para asegurar que el componente base esté ahí
+          ./knime_engine/knime -nosplash -consoleLog -application org.eclipse.equinox.p2.director \
+          -repository https://update.knime.com/analytics-platform/5.1 \
+          -installIU org.knime.features.batch.executor.feature.group || echo "Ya instalado o error ignorado"
 
       - name: 6. Ejecutar Flujo de KNIME
         env:
           MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
         run: |
-          # Cambiamos el formato de la variable para que coincida con lo que pide NodePit
+          # Volvemos al estándar de KNIME pero con la sintaxis blindada
           xvfb-run ./knime_engine/knime -nosplash -application org.knime.product.KNIME_BATCH_APPLICATION \
           -workflowDir="./Montgomery" \
           -reset \
-          -v=MONGO_PASSWORD;"$MONGO_PASSWORD";String
+          -workflow.variable=MONGO_PASSWORD,"$MONGO_PASSWORD",String
 
       - name: 7. Guardar la memoria histórica en GitHub
         run: |
