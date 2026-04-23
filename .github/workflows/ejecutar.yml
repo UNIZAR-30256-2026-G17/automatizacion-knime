@@ -31,9 +31,11 @@ jobs:
           tar -xzf knime_5.11.0.linux.gtk.x86_64.tar.gz
           mv knime_5.11.0 knime_engine
 
-      - name: 5. Verificar que KNIME está listo
+      - name: 5. Instalar Extensión Batch Executor (Versión 5.x)
         run: |
-          xvfb-run ./knime_engine/knime --version
+          ./knime_engine/knime -nosplash -consoleLog -application org.eclipse.equinox.p2.director \
+          -repository https://update.knime.com/analytics-platform/5.3 \
+          -installIU org.knime.features.batch.executor.feature.group,org.knime.features.enterprise.batch.feature.group
 
       - name: 6. Ejecutar Flujo de KNIME
         env:
