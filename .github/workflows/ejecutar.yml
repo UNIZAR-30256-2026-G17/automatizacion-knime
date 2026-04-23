@@ -9,7 +9,7 @@ jobs:
   procesar_delitos:
     runs-on: ubuntu-latest
     permissions:
-      contents: write     # Permiso para guardar los CSV en el repo
+      contents: write     
 
     steps:
       - name: 1. Descargar el repositorio
@@ -17,7 +17,6 @@ jobs:
 
       - name: 2. Descargar datos brutos de la Policía
         run: |
-          # Creamos la carpeta DATOS dentro del flujo para que knime:// lo encuentre
           mkdir -p "./Montgomery/DATOS"
           curl -L -o "./Montgomery/DATOS/datos_policia_brutos.csv" "https://data.montgomerycountymd.gov/resource/icn6-v9z3.csv?\$limit=1000000"
 
@@ -32,17 +31,16 @@ jobs:
           tar -xzf knime_5.11.0.linux.gtk.x86_64.tar.gz
           mv knime_5.11.0 knime_engine
 
-      - name: 5. Instalar Extensión Batch Executor (Obligatorio en 5.x)
+      - name: 5. Instalar Extensión Batch Executor (Corregido)
         run: |
-          ./knime_engine/knime -nosplash -application org.eclipse.equinox.p2.director \
-          -repository https://update.knime.com/analytics-platform/5.1 \
+          ./knime_engine/knime -nosplash -consoleLog -application org.eclipse.equinox.p2.director \
+          -repository https://update.knime.com/analytics-platform/5.3,https://update.knime.com/analytics-platform/common/5.3 \
           -installIU org.knime.features.batch.executor.feature.group
 
       - name: 6. Ejecutar Flujo de KNIME
         env:
           MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
         run: |
-          # Usamos xvfb-run para simular la pantalla y pasamos la contraseña
           xvfb-run ./knime_engine/knime -nosplash -application org.knime.product.KNIME_BATCH_APPLICATION \
           -workflowDir="./Montgomery" \
           -reset \
@@ -52,8 +50,6 @@ jobs:
         run: |
           git config --global user.name "Bot KNIME"
           git config --global user.email "bot@github.com"
-          # Añadimos los archivos que tu flujo genera en la carpeta DATOS
           git add "./Montgomery/DATOS/crimenes_limpios.csv"
           git add "./Montgomery/DATOS/crimenes_ya_subidos.csv"
-          # Solo hace commit si hay cambios reales
           git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizando histórico de crímenes" && git push)
