@@ -73,7 +73,7 @@
         <entry key="numerical_granularity" type="xstring" value="Years"/>
     </config>
     <entry key="customDescription" type="xstring" isnull="true" value=""/>
-    <entry key="state" type="xstring" value="IDLE"/>
+    <entry key="state" type="xstring" value="CONFIGURED"/>
     <entry key="factory" type="xstring" value="org.knime.time.node.filter.datetimebasedrowfilter.DateTimeBasedRowFilterNodeFactory"/>
     <entry key="node-name" type="xstring" value="Date&amp;Time-based Row Filter"/>
     <entry key="node-bundle-name" type="xstring" value="KNIME Date and Time Handling"/>
